@@ -12,12 +12,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
-      <body
-        className="antialiased border p-2 h-full" 
-      >
-        {children}
-      </body>
+    <html lang="en" className="h-full scroll-auto">
+      <body className="antialiased border p-2 min-h-full">{children}</body>
     </html>
   );
 }
