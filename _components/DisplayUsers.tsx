@@ -1,6 +1,8 @@
 import { prisma } from "@/lib/prisma";
 import User from "@/_types/typeList";
 
+export const dynamic = "force dynamic";
+
 const DisplayUsers = async () => {
   const user: User[] = await prisma.user.findMany();
 

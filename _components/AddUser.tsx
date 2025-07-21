@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const AddUser = () => {
   const [name, setName] = useState("");
@@ -8,9 +9,12 @@ const AddUser = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
+  const router = useRouter();
+
   const handleSubmit = async () => {
     setLoading(true);
     const response = await fetch("/api/users", {
+      cache: "no-store",
       method: "POST",
       body: JSON.stringify({ name, email }),
       headers: {
@@ -29,6 +33,7 @@ const AddUser = () => {
     }
 
     setLoading(false);
+    router.refresh();
   };
 
   return (
